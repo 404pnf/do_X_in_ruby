@@ -1,33 +1,37 @@
 # Working with lists
 
-P01 (*) Find the last box of a list.
+1. P01 (*) Find the last box of a list.
+
 Example:
-* (my-last '(a b c d))
+(my-last '(a b c d))
 (D)
 
-
-    [:a, :b, :c, :d].last
+        ```Ruby
+        [:a, :b, :c, :d].last
+        ```
 
 The solution is not good since if 'failed' on empty array.
 
-    [].last => nil
-    [1, ni].last => nil
+        ```Ruby
+        [].last => nil
+        [1, ni].last => nil
+        ```
 
 Solution?
 
-P02 (*) Find the last but one box of a list.
+1. P02 (*) Find the last but one box of a list.
 Example:
-* (my-but-last '(a b c d))
+(my-but-last '(a b c d))
 (C D)
 
-    def my-but-last(a)
-      *e, _ = a
-      e
-    end
-
-or
+        ```Ruby
+        def my-but-last(a)
+          *e, _ = a
+          e
+        end
 
     [:a, :b, :c, :d][0..-2]
+    ```
 
 Still, empty array causes trouble:
 
@@ -40,25 +44,32 @@ Still, empty array causes trouble:
     [4] pry(main)> [][0..-2]
     => []
 
-P03 (*) Find the K'th element of a list.
+1. P03 (*) Find the K'th element of a list.
 The first element in the list is number 1.
 Example:
-* (element-at '(a b c d e) 3)
+(element-at '(a b c d e) 3)
 C
 
-    [:a, :b, :c, :d][3]
+      ```Ruby
+      [:a, :b, :c, :d][3]
+      ```
 
-P04 (*) Find the number of elements of a list.
+1. P04 (*) Find the number of elements of a list.
 
-    [:a, :b, :c, :d].size
+      ```Ruby
+      [:a, :b, :c, :d].size
+      ```
 
 P05 (*) Reverse a list.
 
-    [:a, :b, :c, :d].reverse
+      ```Ruby
+      [:a, :b, :c, :d].reverse
+      ```
 
 P06 (*) Find out whether a list is a palindrome.
 A palindrome can be read forward or backward; e.g. (x a m a x).
 
+    ```Ruby
     # natural instinc but inefficient?
     [:a, :b, :c, :d].reverse == [:a, :b, :c, :d]
 
@@ -66,6 +77,7 @@ A palindrome can be read forward or backward; e.g. (x a m a x).
     [:a, :b, :c, :d].each.lazy.
         zip([:b]).
         any? { |e1, e2| e1 != e2 }
+    ```
 
 P07 (**) Flatten a nested list structure.
 Transform a list, possibly holding lists as elements into a `flat' list by replacing each list with its elements (recursively).
