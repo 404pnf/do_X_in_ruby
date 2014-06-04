@@ -6,16 +6,16 @@ Example:
 (my-last '(a b c d))
 (D)
 
-        ```Ruby
-        [:a, :b, :c, :d].last
-        ```
+    ```Ruby
+    [:a, :b, :c, :d].last
+    ```
 
 The solution is not good since if 'failed' on empty array.
 
-        ```Ruby
-        [].last => nil
-        [1, ni].last => nil
-        ```
+    ```Ruby
+    [].last => nil
+    [1, ni].last => nil
+    ```
 
 Solution?
 
