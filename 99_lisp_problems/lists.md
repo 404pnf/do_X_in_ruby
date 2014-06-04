@@ -2,18 +2,6 @@
 
 
   ```Ruby
-  # bad
-  puts 'foobar'; # superfluous semicolon
-
-  puts 'foo'; puts 'bar' # two expressions on the same line
-
-  # good
-  puts 'foobar'
-
-  puts 'foo'
-  puts 'bar'
-
-  puts 'foo', 'bar' # this applies to puts in particular
   ```
 
 1. P01 (*) Find the last box of a list.
@@ -22,16 +10,16 @@ Example:
 (my-last '(a b c d))
 (D)
 
-    ```Ruby
-    [:a, :b, :c, :d].last
-    ```
+  ```Ruby
+  [:a, :b, :c, :d].last
+  ```
 
 The solution is not good since if 'failed' on empty array.
 
-    ```Ruby
-    [].last => nil
-    [1, ni].last => nil
-    ```
+  ```Ruby
+  [].last => nil
+  [1, ni].last => nil
+  ```
 
 Solution?
 
@@ -40,25 +28,25 @@ Example:
 (my-but-last '(a b c d))
 (C D)
 
-        ```Ruby
-        def my-but-last(a)
-          *e, _ = a
-          e
-        end
+  ```Ruby
+  def my-but-last(a)
+    *e, _ = a
+    e
+  end
 
-    [:a, :b, :c, :d][0..-2]
-    ```
+  [:a, :b, :c, :d][0..-2]
+  ```
 
 Still, empty array causes trouble:
 
-    [1] pry(main)> [1,2,3][0..-2]
-    => [1, 2]
-    [2] pry(main)> [1,2][0..-2]
-    => [1]
-    [3] pry(main)> [1][0..-2]
-    => []
-    [4] pry(main)> [][0..-2]
-    => []
+[1] pry(main)> [1,2,3][0..-2]
+=> [1, 2]
+[2] pry(main)> [1,2][0..-2]
+=> [1]
+[3] pry(main)> [1][0..-2]
+=> []
+[4] pry(main)> [][0..-2]
+=> []
 
 1. P03 (*) Find the K'th element of a list.
 The first element in the list is number 1.
@@ -66,34 +54,34 @@ Example:
 (element-at '(a b c d e) 3)
 C
 
-      ```Ruby
-      [:a, :b, :c, :d][3]
-      ```
+  ```Ruby
+  [:a, :b, :c, :d][3]
+  ```
 
 1. P04 (*) Find the number of elements of a list.
 
-      ```Ruby
-      [:a, :b, :c, :d].size
-      ```
+  ```Ruby
+  [:a, :b, :c, :d].size
+  ```
 
 P05 (*) Reverse a list.
 
-      ```Ruby
-      [:a, :b, :c, :d].reverse
-      ```
+  ```Ruby
+  [:a, :b, :c, :d].reverse
+  ```
 
 P06 (*) Find out whether a list is a palindrome.
 A palindrome can be read forward or backward; e.g. (x a m a x).
 
-    ```Ruby
-    # natural instinc but inefficient?
-    [:a, :b, :c, :d].reverse == [:a, :b, :c, :d]
+  ```Ruby
+  # natural instinc but inefficient?
+  [:a, :b, :c, :d].reverse == [:a, :b, :c, :d]
 
-    # more efficient? how to prove it?
-    [:a, :b, :c, :d].each.lazy.
-        zip([:b]).
-        any? { |e1, e2| e1 != e2 }
-    ```
+  # more efficient? how to prove it?
+  [:a, :b, :c, :d].each.lazy.
+      zip([:b]).
+      any? { |e1, e2| e1 != e2 }
+  ```
 
 P07 (**) Flatten a nested list structure.
 Transform a list, possibly holding lists as elements into a `flat' list by replacing each list with its elements (recursively).
