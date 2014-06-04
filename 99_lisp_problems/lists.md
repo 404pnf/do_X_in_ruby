@@ -1,5 +1,21 @@
 # Working with lists
 
+
+  ```Ruby
+  # bad
+  puts 'foobar'; # superfluous semicolon
+
+  puts 'foo'; puts 'bar' # two expressions on the same line
+
+  # good
+  puts 'foobar'
+
+  puts 'foo'
+  puts 'bar'
+
+  puts 'foo', 'bar' # this applies to puts in particular
+  ```
+
 1. P01 (*) Find the last box of a list.
 
 Example:
