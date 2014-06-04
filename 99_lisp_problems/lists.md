@@ -1,10 +1,7 @@
 # Working with lists
 
 
-  ```Ruby
-  ```
-
-1. P01 (*) Find the last box of a list.
+## P01 (*) Find the last box of a list.
 
 Example:
 (my-last '(a b c d))
@@ -23,7 +20,7 @@ The solution is not good since if 'failed' on empty array.
 
 Solution?
 
-1. P02 (*) Find the last but one box of a list.
+## P02 (*) Find the last but one box of a list.
 Example:
 (my-but-last '(a b c d))
 (C D)
@@ -48,7 +45,7 @@ Still, empty array causes trouble:
 [4] pry(main)> [][0..-2]
 => []
 
-1. P03 (*) Find the K'th element of a list.
+## P03 (*) Find the K'th element of a list.
 The first element in the list is number 1.
 Example:
 (element-at '(a b c d e) 3)
@@ -58,19 +55,19 @@ C
   [:a, :b, :c, :d][3]
   ```
 
-1. P04 (*) Find the number of elements of a list.
+## P04 (*) Find the number of elements of a list.
 
   ```Ruby
   [:a, :b, :c, :d].size
   ```
 
-P05 (*) Reverse a list.
+## P05 (*) Reverse a list.
 
   ```Ruby
   [:a, :b, :c, :d].reverse
   ```
 
-P06 (*) Find out whether a list is a palindrome.
+## P06 (*) Find out whether a list is a palindrome.
 A palindrome can be read forward or backward; e.g. (x a m a x).
 
   ```Ruby
@@ -83,7 +80,7 @@ A palindrome can be read forward or backward; e.g. (x a m a x).
       any? { |e1, e2| e1 != e2 }
   ```
 
-P07 (**) Flatten a nested list structure.
+## P07 (**) Flatten a nested list structure.
 Transform a list, possibly holding lists as elements into a `flat' list by replacing each list with its elements (recursively).
 
 Example:
@@ -102,28 +99,32 @@ Example:
 * (compress '(a a a a b c c a a d e e e e))
 (A B C A D E)
 
-    Array.uniq
-    requiire 'set'
-    [:a, :b, ...].to_set
+  ```Ruby
+  Array.uniq
+  requiire 'set'
+  [:a, :b, ...].to_set
+  ```
 
-P09 (**) Pack consecutive duplicates of list elements into sublists.
+
+## P09 (**) Pack consecutive duplicates of list elements into sublists.
 If a list contains repeated elements they should be placed in separate sublists.
 
 Example:
 * (pack '(a a a a b c c a a d e e e e))
 ((A A A A) (B) (C C) (A A) (D) (E E E E))
 
+  ```Ruby
+  [1, 1, 2, 3].group_by { |e| e }.map { |k, v| [k, v.first] }
+  => [[1, 1], [2, 2], [3, 3]]
 
-    [1, 1, 2, 3].group_by { |e| e }.map { |k, v| [k, v.first] }
-    => [[1, 1], [2, 2], [3, 3]]
+  # I think this is a better solution
+  # since the result is a hash
+  # easier to manipulate for the next question
+  [1, 1, 2, 3].group_by { |e| e }
+  => {1=>[1, 1], 2=>[2], 3=>[3]}
+  ```
 
-    # I think this is a better solution
-    # since the result is a hash
-    # easier to manipulate for the next question
-    [1, 1, 2, 3].group_by { |e| e }
-    => {1=>[1, 1], 2=>[2], 3=>[3]}
-
-P10 (*) Run-length encoding of a list.
+## P10 (*) Run-length encoding of a list.
 Use the result of problem P09 to implement the so-called run-length encoding data compression method. Consecutive duplicates of elements are encoded as lists (N E) where N is the number of duplicates of the element E.
 
 Example:
@@ -132,47 +133,53 @@ Example:
 
 
 
-
-P11 (*) Modified run-length encoding.
+## P11 (*) Modified run-length encoding.
 Modify the result of problem P10 in such a way that if an element has no duplicates it is simply copied into the result list. Only elements with duplicates are transferred as (N E) lists.
 
 Example:
 * (encode-modified '(a a a a b c c a a d e e e e))
 ((4 A) B (2 C) (2 A) D (4 E))
-P12 (**) Decode a run-length encoded list.
+
+## P12 (**) Decode a run-length encoded list.
 Given a run-length code list generated as specified in problem P11. Construct its uncompressed version.
-P13 (**) Run-length encoding of a list (direct solution).
+
+## P13 (**) Run-length encoding of a list (direct solution).
 Implement the so-called run-length encoding data compression method directly. I.e. don't explicitly create the sublists containing the duplicates, as in problem P09, but only count them. As in problem P11, simplify the result list by replacing the singleton lists (1 X) by X.
 
 Example:
 * (encode-direct '(a a a a b c c a a d e e e e))
 ((4 A) B (2 C) (2 A) D (4 E))
-P14 (*) Duplicate the elements of a list.
+
+## P14 (*) Duplicate the elements of a list.
 Example:
 * (dupli '(a b c c d))
 (A A B B C C C C D D)
-P15 (**) Replicate the elements of a list a given number of times.
+
+## P15 (**) Replicate the elements of a list a given number of times.
 Example:
 * (repli '(a b c) 3)
 (A A A B B B C C C)
 
-P16 (**) Drop every N'th element from a list.
+## P16 (**) Drop every N'th element from a list.
 Example:
 * (drop '(a b c d e f g h i k) 3)
 (A B D E G H K)
-P17 (*) Split a list into two parts; the length of the first part is given.
+
+## P17 (*) Split a list into two parts; the length of the first part is given.
 Do not use any predefined predicates.
 
 Example:
 * (split '(a b c d e f g h i k) 3)
 ( (A B C) (D E F G H I K))
-P18 (**) Extract a slice from a list.
+
+## P18 (**) Extract a slice from a list.
 Given two indices, I and K, the slice is the list containing the elements between the I'th and K'th element of the original list (both limits included). Start counting the elements with 1.
 
 Example:
 * (slice '(a b c d e f g h i k) 3 7)
 (C D E F G)
-P19 (**) Rotate a list N places to the left.
+
+## P19 (**) Rotate a list N places to the left.
 Examples:
 * (rotate '(a b c d e f g h) 3)
 (D E F G H A B C)
@@ -181,46 +188,54 @@ Examples:
 (G H A B C D E F)
 
 Hint: Use the predefined functions length and append, as well as the result of problem P17.
-P20 (*) Remove the K'th element from a list.
+
+## P20 (*) Remove the K'th element from a list.
 Example:
 * (remove-at '(a b c d) 2)
 (A C D)
-P21 (*) Insert an element at a given position into a list.
+
+## P21 (*) Insert an element at a given position into a list.
 Example:
 * (insert-at 'alfa '(a b c d) 2)
 (A ALFA B C D)
-P22 (*) Create a list containing all integers within a given range.
+
+## P22 (*) Create a list containing all integers within a given range.
 If first argument is smaller than second, produce a list in decreasing order.
 Example:
 * (range 4 9)
 (4 5 6 7 8 9)
-P23 (**) Extract a given number of randomly selected elements from a list.
+
+## P23 (**) Extract a given number of randomly selected elements from a list.
 The selected items shall be returned in a list.
 Example:
 * (rnd-select '(a b c d e f g h) 3)
 (E D A)
 
 Hint: Use the built-in random number generator and the result of problem P20.
-P24 (*) Lotto: Draw N different random numbers from the set 1..M.
+
+## P24 (*) Lotto: Draw N different random numbers from the set 1..M.
 The selected numbers shall be returned in a list.
 Example:
 * (lotto-select 6 49)
 (23 1 17 33 21 37)
 
 Hint: Combine the solutions of problems P22 and P23.
-P25 (*) Generate a random permutation of the elements of a list.
+
+## P25 (*) Generate a random permutation of the elements of a list.
 Example:
 * (rnd-permu '(a b c d e f))
 (B A D C E F)
 
 Hint: Use the solution of problem P23.
-P26 (**) Generate the combinations of K distinct objects chosen from the N elements of a list
+
+## P26 (**) Generate the combinations of K distinct objects chosen from the N elements of a list
 In how many ways can a committee of 3 be chosen from a group of 12 people? We all know that there are C(12,3) = 220 possibilities (C(N,K) denotes the well-known binomial coefficients). For pure mathematicians, this result may be great. But we want to really generate all the possibilities in a list.
 
 Example:
 * (combination 3 '(a b c d e f))
 ((A B C) (A B D) (A B E) ... )
-P27 (**) Group the elements of a set into disjoint subsets.
+
+## P27 (**) Group the elements of a set into disjoint subsets.
 a) In how many ways can a group of 9 people work in 3 disjoint subgroups of 2, 3 and 4 persons? Write a function that generates all the possibilities and returns them in a list.
 
 Example:
